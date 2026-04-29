@@ -307,7 +307,7 @@ async def global_server_check(ctx):
         return False
 
     # If role IDs are not configured, allow everyone
-    if COUNCIL_ROLE_ID == 1447554384320794674 and LIBRARY_ROLE_ID == 1446118476711202919:
+    if COUNCIL_ROLE_ID == 0 and LIBRARY_ROLE_ID == 0:
         return True
 
     member = ctx.author
@@ -320,8 +320,8 @@ async def global_server_check(ctx):
 
     # Library Pass → only inside the designated forum channel / threads
     if has_library and (
-        ctx.channel.id == 1454131410913984563
-        or getattr(ctx.channel, "parent_id", None) == 1454131410913984563
+        ctx.channel.id == FORUM_CHANNEL_ID
+        or getattr(ctx.channel, "parent_id", None) == FORUM_CHANNEL_ID
     ):
         return True
 
